@@ -1,0 +1,71 @@
+<form [formGroup]="formParams" class="address-form" (ngSubmit)="formSubmit(formParams.value)">
+    <ul>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>CEP</mat-label>
+                <input matInput formControlName="cep" [imask]="{mask: '00000-000'}">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>logradouro</mat-label>
+                <input matInput formControlName="logradouro">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>complemento</mat-label>
+                <input matInput formControlName="complemento" [imask]="{mask: '0.000'}">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>bairro</mat-label>
+                <input matInput formControlName="bairro">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>localidade</mat-label>
+                <input matInput formControlName="localidade">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>uf</mat-label>
+                <input matInput formControlName="uf">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>ibge</mat-label>
+                <input matInput formControlName="ibge">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>gia</mat-label>
+                <input matInput formControlName="gia">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>ddd</mat-label>
+                <input matInput formControlName="ddd">
+            </mat-form-field>
+        </li>
+        <li>
+            <mat-form-field appearance="fill">
+                <mat-label>siafi</mat-label>
+                <input matInput formControlName="siafi" [disabled]='true'>
+            </mat-form-field>
+        </li>
+        <li class="w-100">
+            <button mat-flat-button [disabled]="isDisabledSaveButton">Salvar</button>
+            <!-- <p>Dados salvos com sucesso!</p> -->
+        </li>
+    </ul>
+    <div class="overlay" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+    </div>        
+</form>
