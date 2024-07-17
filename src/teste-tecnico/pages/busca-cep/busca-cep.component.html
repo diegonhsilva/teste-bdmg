@@ -1,5 +1,11 @@
 <form [formGroup]="formParams" class="address-form" (ngSubmit)="formSubmit(formParams.value)">
+    <h2>Busca CEP</h2>
+    <p>Lista os dados do retorno da API VIACEP e permite edição, salvando em localstorage.</p>
+    <p>O site está responsivo.</p>
     <ul>
+        <li class="observacao">
+            <p>*Todos os campos são obrigatórios</p>
+        </li>
         <li>
             <mat-form-field appearance="fill">
                 <mat-label>CEP</mat-label>
@@ -8,61 +14,63 @@
         </li>
         <li>
             <mat-form-field appearance="fill">
-                <mat-label>logradouro</mat-label>
+                <mat-label>Logradouro</mat-label>
                 <input matInput formControlName="logradouro">
             </mat-form-field>
         </li>
         <li>
             <mat-form-field appearance="fill">
-                <mat-label>complemento</mat-label>
+                <mat-label>Complemento</mat-label>
                 <input matInput formControlName="complemento" [imask]="{mask: '0.000'}">
             </mat-form-field>
         </li>
         <li>
             <mat-form-field appearance="fill">
-                <mat-label>bairro</mat-label>
+                <mat-label>Bairro</mat-label>
                 <input matInput formControlName="bairro">
             </mat-form-field>
         </li>
         <li>
             <mat-form-field appearance="fill">
-                <mat-label>localidade</mat-label>
+                <mat-label>Localidade</mat-label>
                 <input matInput formControlName="localidade">
             </mat-form-field>
         </li>
         <li>
             <mat-form-field appearance="fill">
-                <mat-label>uf</mat-label>
+                <mat-label>UF</mat-label>
                 <input matInput formControlName="uf">
             </mat-form-field>
         </li>
         <li>
             <mat-form-field appearance="fill">
-                <mat-label>ibge</mat-label>
+                <mat-label>IBGE</mat-label>
                 <input matInput formControlName="ibge">
             </mat-form-field>
         </li>
         <li>
             <mat-form-field appearance="fill">
-                <mat-label>gia</mat-label>
+                <mat-label>GIA</mat-label>
                 <input matInput formControlName="gia">
             </mat-form-field>
         </li>
         <li>
             <mat-form-field appearance="fill">
-                <mat-label>ddd</mat-label>
+                <mat-label>DDD</mat-label>
                 <input matInput formControlName="ddd">
             </mat-form-field>
         </li>
         <li>
             <mat-form-field appearance="fill">
-                <mat-label>siafi</mat-label>
+                <mat-label>SIAFI</mat-label>
                 <input matInput formControlName="siafi" [disabled]='true'>
             </mat-form-field>
         </li>
         <li class="w-100">
             <button mat-flat-button [disabled]="isDisabledSaveButton">Salvar</button>
-            <!-- <p>Dados salvos com sucesso!</p> -->
+        </li>
+        <li class="w-100">
+            <p class="msg-sucesso" *ngIf="isShowMsg">Dados salvos com sucesso!</p>
         </li>
     </ul>
     <div class="overlay" *ngIf="loading">

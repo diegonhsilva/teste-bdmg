@@ -10,6 +10,7 @@ header{
         padding: 20px;
         display: flex;
         justify-content: space-between;
+        box-sizing: border-box;
         h1{
             font: bold 30px/120% Arial;
         }
@@ -24,6 +25,14 @@ header{
                     color: #343434;
                     text-decoration: underline;
                 }
+            }
+        }
+    }
+    @media screen and (max-width: 800px) {
+        .container{
+            display: block;
+            h1{
+                padding-left: 40px;
             }
         }
     }

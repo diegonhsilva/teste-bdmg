@@ -36,6 +36,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     <li>O botão de salvar deve ser bloqueado caso todos os campos do formulário <b>não estejam preenchidos</b>;</li>
     <li>Utilize o <b>Angular Material</b> para facilitar o desenvolvimento: https://material.angular.io/</li>
     <li>Caso necessite, guie-se pela documentação do Angular: <a href="https://angular.dev/">https://angular.dev/</a></li>
+    <li><a href="/busca-cep">Ver teste</a></li>
   </ol>
   </mat-expansion-panel>
 </mat-accordion>

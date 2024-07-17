@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -27,17 +26,19 @@ import { Address } from '../../../app/app.interfaces';
 })
 export class BuscaCepComponent implements OnInit {
 
+  //Declarações de variáveis
   formParams!: FormGroup;
   isDisabledSaveButton: boolean = true;
-  loading: boolean = false;  
+  loading: boolean = false;
+  isShowMsg: boolean = false;
 
   constructor(
-    private http : HttpClient,
     private fb: FormBuilder,
     private service: AppService
   ) { }
 
   ngOnInit(): void {
+    //Instancia o formulário vazio
     this.formParams = this.fb.group({
       cep: ['', [Validators.required]],
       logradouro: ['', [Validators.required]],
@@ -51,24 +52,31 @@ export class BuscaCepComponent implements OnInit {
       ddd: ['', [Validators.required]],
       siafi: [{ value: '', disabled: true }, [Validators.required]]
     })
+    //Controla o estado do botão (ativo/inativo)
     this.formParams.statusChanges.subscribe(status => {
-      this.isDisabledSaveButton = status !== 'VALID'; // Disable when not valid
+      this.isDisabledSaveButton = status !== 'VALID';
     });
+    //Chama a função de buscar CEP
     this.buscaCep('30160907');
   }
 
   buscaCep(cep: string) {
     this.loading = true;
+    /*
+      Chama o serviço de buscar CEP passando por parametro o CEP
+      OBS: Com poucas alterações, seria possível inserir um campo de busca por CEP. 
+      Já deixei a função e o service prontos.
+    */
     this.service.getByCep(cep).subscribe(result => {
       this.formParams.patchValue(result);
       this.loading = false;
-      console.log(result)
     });
   }
 
   formSubmit(formData:Address) {
-    console.log(formData);
+    //Chama o serviço para salvar os dados em localstorage passando os dados do formulário por parâmetro
     this.service.setStorageAddres(formData);
+    this.isShowMsg = true;
   }
 
 }
